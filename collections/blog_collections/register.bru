@@ -1,0 +1,19 @@
+meta {
+  name: register
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://127.0.0.1:8000/api/v1/auth/register
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  login: dispAdmin
+  email: disp@gmail.com
+  password: 12345Nik!
+  password_confirmation: 12345Nik!
+  avatar: @file(C:\Users\dispropele\Downloads\previewfile_2891543360.jpg)
+}

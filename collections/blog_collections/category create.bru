@@ -1,0 +1,19 @@
+meta {
+  name: category create
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://127.0.0.1:8000/api/v1/categories?name=Новая категория
+  body: none
+  auth: bearer
+}
+
+params:query {
+  name: Новая категория
+}
+
+auth:bearer {
+  token: 2|aw1aRfKIzw1t1MFot6vyKfO9lBBTwKmSBhRJ1F7Sb84fad48
+}
