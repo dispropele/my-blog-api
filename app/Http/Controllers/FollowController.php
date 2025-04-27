@@ -70,7 +70,7 @@ class FollowController extends Controller
         }
 
         //Проверка на подписку
-        if(!$follower->following()->where('user.id', $user->id)->exists()){
+        if(!$follower->following()->where('userы.id', $user->id)->exists()){
             return response()->json([
                 'success' => false,
                 'message' => 'Вы не подписаны на этого пользователя'

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
@@ -41,6 +42,17 @@ Route::prefix('v1')->group(function () {
            Route::post('/users/{user}/follow', [FollowController::class, 'store']);
            //Отписка от пользователя
            Route::delete('/users/{user}/follow', [FollowController::class, 'destroy']);
+
+           //Уведомления
+
+           //Получаем уведомления
+           Route::get('/notifications', [NotificationController::class, 'index']);
+           //Обновляем все уведомления
+           Route::patch('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
+           //Обновляем определенное уведомление
+           Route::patch('/notifications/{id}', [NotificationController::class, 'markOneAsRead']);
+           //Удаление уведомления
+           Route::delete('/notifications/{id}', [NotificationController::class, 'destroy']);
 
        });
 

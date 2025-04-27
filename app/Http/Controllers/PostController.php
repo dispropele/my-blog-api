@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\PostCreated;
 use App\Http\Requests\Api\StorePostRequest;
 use App\Http\Requests\Api\UpdatePostRequest;
 use App\Http\Resources\PostResource;
@@ -120,6 +121,9 @@ class PostController extends Controller
             ] + $validated);
         //Подгружаем связи для ответа
         $post->load('user:id,login,avatar', 'category:id,name,slug');
+
+        //Инициация события
+        PostCreated::dispatch($post);
 
         return response(new PostResource($post));
     }
